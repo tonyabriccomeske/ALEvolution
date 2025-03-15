@@ -60,11 +60,27 @@ page 90025 "CatCardPTE"
                 end;
             }
         }
+        area(Processing)
+        {
+            action(ViewBiographyText)
+            {
+                ApplicationArea = All;
+                Caption = 'View Biography Text';
+                ToolTip = 'View the biography text of the cat how it is stored in the Blob field.';
+                Image = View;
+
+                trigger OnAction()
+                begin
+                    Message(BiographyVar);
+                end;
+            }
+        }
         area(Promoted)
         {
             group(Category_Process)
             {
                 actionref(PrintProfile_Promoted; PrintProfile) { }
+                actionref(ViewBiographyText_Promoted; ViewBiographyText) { }
             }
         }
     }
