@@ -1,9 +1,10 @@
-table 90025 "CatRTPTE"
+table 90025 "CatPTE"
 {
     Caption = 'Cat';
     DataClassification = CustomerContent;
-    LookupPageId = CatsRTPTE;
-    DrillDownPageId = CatRTPTE;
+    LookupPageId = CatsPTE;
+    DrillDownPageId = "CatCardPTE";
+    DataCaptionFields = "No.", Name;
 
     fields
     {
@@ -11,6 +12,12 @@ table 90025 "CatRTPTE"
         {
             Caption = 'No.';
             ToolTip = 'Specifies the Identification No. of the Cat.';
+        }
+        field(5; Picture; Blob)
+        {
+            Caption = 'Picture';
+            Subtype = Bitmap;
+            ToolTip = 'Specifies the Picture of the Cat.';
         }
         field(10; Name; Text[100])
         {
@@ -21,6 +28,16 @@ table 90025 "CatRTPTE"
         {
             Caption = 'Breed';
             ToolTip = 'Specifies the Breed of the Cat.';
+        }
+        field(30; Weight; Decimal)
+        {
+            Caption = 'Weight';
+            ToolTip = 'Specifies the Weight of the Cat.';
+        }
+        field(40; Adopted; Boolean)
+        {
+            Caption = 'Adopted';
+            ToolTip = 'Indicates whether or not the cat was adopted.';
         }
         field(100; Biography; Blob)
         {
@@ -52,8 +69,8 @@ table 90025 "CatRTPTE"
     var
         OutStream: OutStream;
     begin
-        Clear(Biography);
-        Biography.CreateOutStream(OutStream, TEXTENCODING::UTF8);
+        Clear(Rec.Biography);
+        Rec.Biography.CreateOutStream(OutStream, TEXTENCODING::UTF8);
         OutStream.WriteText(NewBiography);
         Rec.Modify();
     end;
@@ -63,9 +80,9 @@ table 90025 "CatRTPTE"
         TypeHelper: Codeunit "Type Helper";
         InStream: InStream;
     begin
-        CalcFields(Biography);
-        Biography.CreateInStream(InStream, TEXTENCODING::UTF8);
+        Rec.CalcFields(Biography);
+        Rec.Biography.CreateInStream(InStream, TEXTENCODING::UTF8);
         if not TypeHelper.TryReadAsTextWithSeparator(InStream, TypeHelper.LFSeparator(), BiographyText) then
-            Message(ReadingDataSkippedMsg, FieldCaption(Biography));
+            Message(ReadingDataSkippedMsg, FieldCaption(Rec.Biography));
     end;
 }
