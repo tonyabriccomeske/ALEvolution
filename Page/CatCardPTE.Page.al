@@ -74,6 +74,18 @@ page 90025 "CatCardPTE"
                     Message(BiographyVar);
                 end;
             }
+            action(FeedCat)
+            {
+                ApplicationArea = All;
+                Caption = 'Feed Cat';
+                ToolTip = 'Feed the cat.';
+                Image = WarehouseSetup;
+
+                trigger OnAction()
+                begin
+                    Rec.FeedCat();
+                end;
+            }
         }
         area(Promoted)
         {
@@ -81,6 +93,7 @@ page 90025 "CatCardPTE"
             {
                 actionref(PrintProfile_Promoted; PrintProfile) { }
                 actionref(ViewBiographyText_Promoted; ViewBiographyText) { }
+                actionref(FeedCat_Promoted; FeedCat) { }
             }
         }
     }
