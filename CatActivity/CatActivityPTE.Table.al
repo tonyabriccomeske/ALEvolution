@@ -20,7 +20,7 @@ table 90002 "Cat ActivityPTE"
         }
         field(10; Blocked; Boolean)
         {
-            Caption = 'Blocked'
+            Caption = 'Blocked';
         }
     }
     keys

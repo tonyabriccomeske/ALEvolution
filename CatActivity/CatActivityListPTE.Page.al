@@ -1,6 +1,6 @@
 namespace ALEvolution.ALEvolution;
 
-page 90001 "Cat Activity ListPTE"
+page 90002 "Cat Activity ListPTE"
 {
     ApplicationArea = All;
     Caption = 'Cat Activity List';
