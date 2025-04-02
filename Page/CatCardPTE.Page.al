@@ -50,6 +50,7 @@ page 90025 "CatCardPTE"
                 Caption = 'Print Profile';
                 ToolTip = 'Print the profile of the cat.';
                 Image = Print;
+                Ellipsis = true;
 
                 trigger OnAction()
                 var
@@ -60,6 +61,7 @@ page 90025 "CatCardPTE"
                 end;
             }
         }
+
         area(Processing)
         {
             action(ViewBiographyText)
@@ -74,6 +76,7 @@ page 90025 "CatCardPTE"
                     Message(BiographyVar);
                 end;
             }
+
             action(FeedCat)
             {
                 ApplicationArea = All;
@@ -86,7 +89,77 @@ page 90025 "CatCardPTE"
                     Rec.FeedCat();
                 end;
             }
+
+
+            group(ValidateSchedule)
+            {
+                Caption = 'Validate Schedule';
+                Image = ValidateEmailLoggingSetup;
+
+                action(ValidateCatScheduleLikeADinosaur)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Like a Dinosaur';
+                    ToolTip = 'Gives a simple `ERROR`';
+                    Image = ReleaseDoc;
+
+                    trigger OnAction()
+                    var
+                        ValidateCatSchedule: Codeunit "Validate Cat SchedulePTE";
+
+                    begin
+                        ValidateCatSchedule.ValidateCatScheduleLikeADinosaur(Rec);
+                    end;
+                }
+
+                action(ValidateCatScheduleLikeAFriend)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Like a Friend';
+                    ToolTip = 'Gives the user a helping hand';
+                    Image = ReleaseDoc;
+
+                    trigger OnAction()
+                    var
+                        ValidateCatSchedule: Codeunit "Validate Cat SchedulePTE";
+
+                    begin
+                        ValidateCatSchedule.ValidateCatScheduleLikeAFriend(Rec);
+                    end;
+                }
+
+                action(ValidateCatScheduleLikeAFriendWaitThereIsMore)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Like a Friend - Wait there is more!';
+                    ToolTip = 'Gives the user a helping hand - and options';
+                    Image = ReleaseDoc;
+
+                    trigger OnAction()
+                    var
+                        ValidateCatSchedule: Codeunit "Validate Cat SchedulePTE";
+
+                    begin
+                        ValidateCatSchedule.ValidateCatScheduleLikeAFriendWaitThereIsMore(Rec);
+                    end;
+                }
+            }
         }
+
+        area(Navigation)
+        {
+            action(ViewCatSchedule)
+            {
+                ApplicationArea = All;
+                Caption = 'Cat Schedule';
+                ToolTip = 'View the Cat Schedule';
+                Image = Timeline;
+
+                RunObject = page "Cat SchedulePTE";
+                RunPageLink = "Cat No." = field("No.");
+            }
+        }
+
         area(Promoted)
         {
             group(Category_Process)

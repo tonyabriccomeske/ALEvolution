@@ -8,5 +8,10 @@ permissionset 90000 ALEPermissionPTE
         page CatCardPTE = X,
         page CatPicturePTE = X,
         page CatsPTE = X,
-        page "Sales Hist. Sell-to Fact PMPTE" = X;
+        tabledata "Cat ActivityPTE" = RIMD,
+        tabledata "Cat SchedulePTE" = RIMD,
+        table "Cat ActivityPTE" = X,
+        table "Cat SchedulePTE" = X,
+        page "Cat Activity ListPTE" = X,
+        page UtilitiesPTE = X;
 }
