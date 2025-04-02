@@ -85,4 +85,24 @@ table 90025 "CatPTE"
         if not TypeHelper.TryReadAsTextWithSeparator(InStream, TypeHelper.LFSeparator(), BiographyText) then
             Message(ReadingDataSkippedMsg, FieldCaption(Rec.Biography));
     end;
+
+    /// <summary>
+    /// The user is prompted to confirm if they want to feed the cat.
+    /// If the user confirms, feed the cat with a random amount of food.
+    /// </summary>
+    procedure FeedCat()
+    var
+        ConfirmManagement: Codeunit "Confirm Management";
+        FeedCatQst: Label 'Do you want to feed the cat %1?', Comment = '%1=Cat Name';
+    begin
+        if ConfirmManagement.GetResponseOrDefault(StrSubstNo(FeedCatQst, Rec.Name), true) then begin
+            Rec.Weight += 0.01 + Random(90) / 1000;
+            if GuiAllowed then
+                Message('The cat %1 has been fed.', Rec.Name);
+        end
+        else
+            if GuiAllowed then
+                Message('The cat %1 will not be fed.', Rec.Name);
+    end;
 }
+

@@ -77,15 +77,31 @@ page 90025 "CatCardPTE"
                 end;
             }
 
+            action(FeedCat)
+            {
+                ApplicationArea = All;
+                Caption = 'Feed Cat';
+                ToolTip = 'Feed the cat.';
+                Image = WarehouseSetup;
+
+                trigger OnAction()
+                begin
+                    Rec.FeedCat();
+                end;
+            }
+
+
             group(ValidateSchedule)
             {
                 Caption = 'Validate Schedule';
+                Image = ValidateEmailLoggingSetup;
 
                 action(ValidateCatScheduleLikeADinosaur)
                 {
                     ApplicationArea = All;
                     Caption = 'Like a Dinosaur';
                     ToolTip = 'Gives a simple `ERROR`';
+                    Image = ReleaseDoc;
 
                     trigger OnAction()
                     var
@@ -101,6 +117,7 @@ page 90025 "CatCardPTE"
                     ApplicationArea = All;
                     Caption = 'Like a Friend';
                     ToolTip = 'Gives the user a helping hand';
+                    Image = ReleaseDoc;
 
                     trigger OnAction()
                     var
@@ -116,6 +133,7 @@ page 90025 "CatCardPTE"
                     ApplicationArea = All;
                     Caption = 'Like a Friend - Wait there is more!';
                     ToolTip = 'Gives the user a helping hand - and options';
+                    Image = ReleaseDoc;
 
                     trigger OnAction()
                     var
@@ -125,7 +143,6 @@ page 90025 "CatCardPTE"
                         ValidateCatSchedule.ValidateCatScheduleLikeAFriendWaitThereIsMore(Rec);
                     end;
                 }
-
             }
         }
 
@@ -149,6 +166,7 @@ page 90025 "CatCardPTE"
             {
                 actionref(PrintProfile_Promoted; PrintProfile) { }
                 actionref(ViewBiographyText_Promoted; ViewBiographyText) { }
+                actionref(FeedCat_Promoted; FeedCat) { }
             }
         }
     }
