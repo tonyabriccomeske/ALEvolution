@@ -1,8 +1,9 @@
-table 90002 "Cat ActivityPTE"
+table 90003 BreedPTE
 {
-    Caption = 'Cat Activity';
+    Caption = 'Breed';
     DataClassification = SystemMetadata;
     DataCaptionFields = Code, Description;
+    LookupPageId = "Breed ListPTE";
 
     fields
     {
@@ -14,14 +15,6 @@ table 90002 "Cat ActivityPTE"
         field(2; Description; Text[50])
         {
             Caption = 'Description';
-        }
-        field(3; Category; Enum "Cat Activity CategoryPTE")
-        {
-            Caption = 'Category';
-        }
-        field(10; Blocked; Boolean)
-        {
-            Caption = 'Blocked';
         }
     }
     keys
@@ -36,5 +29,4 @@ table 90002 "Cat ActivityPTE"
     {
         fieldgroup(DropDown; Code, Description) { }
     }
-
 }

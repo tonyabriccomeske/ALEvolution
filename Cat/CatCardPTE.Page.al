@@ -39,7 +39,22 @@ page 90025 "CatCardPTE"
                 }
             }
         }
+
+        area(FactBoxes)
+        {
+            part(CatFactBoxPTE; "Cat FactBoxPTE")
+            {
+                ApplicationArea = All;
+                SubPageLink = "No." = field("No.");
+            }
+            part(CatPicture; "CatPicturePTE")
+            {
+                ApplicationArea = All;
+                SubPageLink = "No." = field("No.");
+            }
+        }
     }
+
     actions
     {
         area(Reporting)
@@ -148,6 +163,17 @@ page 90025 "CatCardPTE"
 
         area(Navigation)
         {
+            action(ViewCatBreeds)
+            {
+                ApplicationArea = All;
+                Caption = 'Cat Breeds';
+                ToolTip = 'View the Cat Breeds';
+                Image = Answers;
+
+                RunObject = page "Cat BreedsPTE";
+                RunPageLink = "Cat No." = field("No.");
+            }
+
             action(ViewCatSchedule)
             {
                 ApplicationArea = All;
