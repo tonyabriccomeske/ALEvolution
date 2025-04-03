@@ -29,6 +29,14 @@ table 90025 "CatPTE"
             Caption = 'Breed';
             ToolTip = 'Specifies the Breed of the Cat.';
         }
+        field(21; "No. of Breeds"; Integer)
+        {
+            Caption = 'No. of Breeds';
+            ToolTip = 'Shows the number of breeds of the Cat.';
+            FieldClass = FlowField;
+            Editable = false;
+            CalcFormula = count("Cat BreedPTE" where("Cat No." = field("No.")));
+        }
         field(30; Weight; Decimal)
         {
             Caption = 'Weight';
@@ -50,6 +58,11 @@ table 90025 "CatPTE"
         {
             Clustered = true;
         }
+    }
+
+    fieldgroups
+    {
+        fieldgroup(DropDown; "No.", Name) { }
     }
 
     var

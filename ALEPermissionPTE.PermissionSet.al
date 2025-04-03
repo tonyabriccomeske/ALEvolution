@@ -13,5 +13,16 @@ permissionset 90000 ALEPermissionPTE
         table "Cat ActivityPTE" = X,
         table "Cat SchedulePTE" = X,
         page "Cat Activity ListPTE" = X,
-        page UtilitiesPTE = X;
+        page UtilitiesPTE = X,
+        tabledata BreedPTE = RIMD,
+        tabledata "Cat BreedPTE" = RIMD,
+        table BreedPTE = X,
+        table "Cat BreedPTE" = X,
+        codeunit "Create Default Cat SchedulePTE" = X,
+        codeunit "Validate Cat SchedulePTE" = X,
+        page "Breed ListPTE" = X,
+        page "Cat BreedPTE" = X,
+        page "Cat BreedsPTE" = X,
+        page "Cat FactBoxPTE" = X,
+        page "Cat SchedulePTE" = X;
 }

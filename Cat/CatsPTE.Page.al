@@ -21,6 +21,11 @@ page 90024 CatsPTE
         }
         area(FactBoxes)
         {
+            part(CatFactBoxPTE; "Cat FactBoxPTE")
+            {
+                ApplicationArea = All;
+                SubPageLink = "No." = field("No.");
+            }
             part(CatPicture; "CatPicturePTE")
             {
                 ApplicationArea = All;
