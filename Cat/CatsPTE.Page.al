@@ -7,6 +7,7 @@ page 90024 CatsPTE
     Editable = false;
     SourceTable = CatPTE;
     CardPageId = "CatCardPTE";
+    QueryCategory = 'Cat';
 
     layout
     {
