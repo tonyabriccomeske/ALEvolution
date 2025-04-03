@@ -16,6 +16,8 @@ page 90025 "CatCardPTE"
                 field("No."; Rec."No.") { }
                 field(Name; Rec.Name) { }
                 field(Breed; Rec.Breed) { }
+                field(Pedigree; Rec.Pedigree) { }
+                field(Sex; Rec.Sex) { }
                 field(Weight; Rec.Weight) { }
                 field(Adopted; Rec.Adopted) { }
                 field(Picture; Rec.Picture) { }

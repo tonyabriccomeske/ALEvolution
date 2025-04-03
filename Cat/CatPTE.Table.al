@@ -24,10 +24,11 @@ table 90025 "CatPTE"
             Caption = 'Name';
             ToolTip = 'Specifies the Name of the Cat.';
         }
-        field(20; Breed; Text[50])
+        field(20; Breed; Code[10])
         {
             Caption = 'Breed';
-            ToolTip = 'Specifies the Breed of the Cat.';
+            ToolTip = 'Specifies the Primary Breed of the Cat.';
+            TableRelation = BreedPTE;
         }
         field(21; "No. of Breeds"; Integer)
         {
@@ -46,6 +47,18 @@ table 90025 "CatPTE"
         {
             Caption = 'Adopted';
             ToolTip = 'Indicates whether or not the cat was adopted.';
+        }
+        field(50; Pedigree; Boolean)
+        {
+            Caption = 'Pedigree';
+            ToolTip = 'Indicates whether or not the cat is a pedigree aka Fancy Cat.';
+        }
+        field(61; Sex; Option)
+        {
+            Caption = 'Sex';
+            OptionMembers = ,Male,Female;
+            OptionCaption = ',Male,Female';
+            ToolTip = 'Indicates the Sex of the Cat.';
         }
         field(100; Biography; Blob)
         {

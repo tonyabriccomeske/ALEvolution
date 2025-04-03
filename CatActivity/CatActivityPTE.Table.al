@@ -3,6 +3,7 @@ table 90002 "Cat ActivityPTE"
     Caption = 'Cat Activity';
     DataClassification = SystemMetadata;
     DataCaptionFields = Code, Description;
+    LookupPageId = "Cat Activity ListPTE";
 
     fields
     {

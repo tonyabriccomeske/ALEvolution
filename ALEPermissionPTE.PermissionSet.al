@@ -24,5 +24,8 @@ permissionset 90000 ALEPermissionPTE
         page "Cat BreedPTE" = X,
         page "Cat BreedsPTE" = X,
         page "Cat FactBoxPTE" = X,
-        page "Cat SchedulePTE" = X;
+        page "Cat SchedulePTE" = X,
+        report CatBreedBreakdownPTE = X,
+        query CatAnalysisByBreedPTE = X,
+        query CatBreedAnalysisPTE = X;
 }
