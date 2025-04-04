@@ -36,6 +36,32 @@ page 90001 UtilitiesPTE
                     ListDictionariesPTE.DoSomethingLikeADinosaur();
                 end;
             }
+            action(GetListOfUniqueBreedsOfAdoptedCats)
+            {
+                ApplicationArea = All;
+                Caption = 'Get List of Unique Breeds of Adopted Cats';
+                ToolTip = 'Get a list of unique breeds of adopted cats.';
+                Image = List;
+
+                trigger OnAction()
+                var
+                begin
+                    ListDictionariesPTE.GetListOfUniqueBreedsOfAdoptedCats();
+                end;
+            }
+            action(GetAdoptedBreedDictionaryWithListOfCats)
+            {
+                ApplicationArea = All;
+                Caption = 'Get Adopted Breed Dictionary with List of Cats';
+                ToolTip = 'Get a dictionary of adopted breeds with a list of cats.';
+                Image = ShowList;
+
+                trigger OnAction()
+                var
+                begin
+                    ListDictionariesPTE.GetAdoptedBreedDictionaryWithListOfCats();
+                end;
+            }
         }
     }
 
