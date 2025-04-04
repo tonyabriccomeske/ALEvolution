@@ -36,6 +36,58 @@ codeunit 90025 ListDictionariesPTE
             until CatPTE.Next() = 0;
     end;
 
+    procedure GetListOfUniqueBreedsOfAdoptedCats()
+    var
+        CatPTE: Record "CatPTE";
+        CatBreed: Record "Cat BreedPTE";
+        UniqueBreeds: List of [Code[10]];
+    begin
+        CatPTE.SetRange(Adopted, true);
+        if CatPTE.FindSet(false) then
+            repeat
+                CatBreed.SetRange("Cat No.", CatPTE."No.");
+                if CatBreed.FindSet(false) then
+                    repeat
+                        if not UniqueBreeds.Contains(CatBreed."Breed Code") then
+                            UniqueBreeds.Add(CatBreed."Breed Code");
+                    until CatBreed.Next() = 0;
+            until CatPTE.Next() = 0;
+
+        Message('Unique Breeds Count: %1', UniqueBreeds.Count());
+    end;
+
+    procedure GetAdoptedBreedDictionaryWithListOfCats()
+    var
+        CatPTE: Record "CatPTE";
+        CatBreed: Record "Cat BreedPTE";
+        BreedDictionary: Dictionary of [Code[10], List of [Code[20]]];
+        CatList: List of [Code[20]];
+        TotalWeight: Decimal;
+    begin
+        CatPTE.SetRange(Adopted, true);
+        if CatPTE.FindSet(false) then
+            repeat
+                CatBreed.SetRange("Cat No.", CatPTE."No.");
+                if CatBreed.FindSet(false) then
+                    repeat
+                        if not BreedDictionary.ContainsKey(CatBreed."Breed Code") then begin
+                            Clear(CatList);
+                            BreedDictionary.Add(CatBreed."Breed Code", CatList);
+                        end else
+                            CatList := BreedDictionary.Get(CatBreed."Breed Code");
+
+                        if not CatList.Contains(CatPTE."No.") then begin
+                            // Do some processing here
+                            TotalWeight += CatPTE.Weight;
+                            CatList.Add(CatPTE."No.");
+                            BreedDictionary.Set(CatBreed."Breed Code", CatList);
+                        end;
+                    until CatBreed.Next() = 0;
+            until CatPTE.Next() = 0;
+
+        Message('Unique Breeds Count: %1. Total Weight: %2', BreedDictionary.Count(), TotalWeight);
+    end;
+
     procedure DoSomethingLikeADinosaur()
     var
         SomeArray: Array[8] of Text[20];
